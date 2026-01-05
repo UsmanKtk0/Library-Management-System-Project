@@ -1,7 +1,3 @@
--- ============================================
-       -- LIBRARY MANAGEMENT SYSTEM -
--- ============================================
-
 -- Table 1: Publisher
 CREATE TABLE Publisher (
     publisher_id SERIAL PRIMARY KEY,
@@ -61,7 +57,7 @@ CREATE TABLE Staff (
     password VARCHAR(100) NOT NULL
 );
 
--- Table 7: Book_Loan (tracks who borrowed which book)
+-- Table 7: Book_Loan (to tracks who borrowed which book)
 CREATE TABLE Book_Loan (
     loan_id SERIAL PRIMARY KEY,
     reader_id INTEGER NOT NULL,
@@ -91,7 +87,6 @@ CREATE TABLE Fine (
     FOREIGN KEY (loan_id) REFERENCES Book_Loan(loan_id)
 );
 
--- Create indexes for faster searching
 CREATE INDEX idx_book_publisher ON Book(publisher_id);
 CREATE INDEX idx_book_title ON Book(LOWER(title));
 CREATE INDEX idx_loan_reader ON Book_Loan(reader_id);
@@ -100,8 +95,8 @@ CREATE INDEX idx_loan_status ON Book_Loan(status);
 CREATE INDEX idx_fine_reader ON Fine(reader_id);
 CREATE INDEX idx_fine_unpaid ON Fine(paid) WHERE paid = FALSE;
 
--- Success message
 DO $$
 BEGIN
     RAISE NOTICE 'Database created successfully! 8 tables and 7 indexes created.';
 END $$;
+
