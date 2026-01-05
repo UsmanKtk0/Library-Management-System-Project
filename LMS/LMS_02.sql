@@ -1,7 +1,3 @@
--- ============================================
--- SAMPLE DATA
--- ============================================
-
 -- Add some publishers
 INSERT INTO Publisher (name, country) VALUES
 ('Penguin Books', 'UK'),
@@ -59,3 +55,4 @@ INSERT INTO Fine (reader_id, loan_id, amount, reason, paid) VALUES
 
 -- Show summary
 SELECT 'Sample data added successfully!' AS message;
+
